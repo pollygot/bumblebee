@@ -1,6 +1,6 @@
 # Kue Workers (by Pollygot)
 
-A KueJS implementation for common async tasks (written in Typescript). 
+A KueJS implementation for common async tasks. 
 
 Kue Workers has the following:
 
@@ -11,6 +11,11 @@ Kue Workers has the following:
 - Twilio
 
 
-## Development
+## Getting started
 
-If you're using VS Code, you can use `cmd + shift + b` to run the default build task (which is mapped to npm run build), and then you can use the command palette (`cmd + shift + p`) and select `Tasks: Run Task > npm: start` to run npm start for you.
+```bash
+git clone # clone this repo
+npm install # install dependencies
+npm run dev # start a dev server that will watch for any changes and recompile
+```
+
