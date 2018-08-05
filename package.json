@@ -1,0 +1,23 @@
+{
+  "name": "workers-kue",
+  "version": "1.0.0",
+  "description": "A KueJS implementation for common async tasks (written in Typescript)",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "npx tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
+  },
+  "author": "@kiwicopple",
+  "license": "ISC",
+  "devDependencies": {
+    "gts": "^0.8.0",
+    "typescript": "~2.8.0"
+  }
+}
