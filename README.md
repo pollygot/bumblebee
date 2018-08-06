@@ -11,7 +11,12 @@ A KueJS queue for common async tasks. This repo exposes an API that you can call
 
 ### Why use this?
 
-For many of the same benefits that any queue will give you: offloading long-running tasks, centralised logging, retry abilities etc. Also it will help to keep your core projects thinner since this repo will contain all the heavy third-party libraries.
+For many of the same benefits that any queue will give you: 
+- offloading long-running tasks
+- centralised logging
+- retry abilities
+- delaying tasks (eg, sending follow-up emails after 10 mins)
+- It can help to keep your core projects thinner since this repo will contain all the heavy third-party libraries.
 
 
 ## Getting started
@@ -79,6 +84,21 @@ Create a new card
      "list_id": "XXXX", // Trello List ID
      "name": "Card name",
      "desc": "Card description"
+   }
+ }
+```
+
+
+#### Slack 
+
+Create a new card
+```javascript
+// POST 'localhost:3000/job'
+{
+   "type": "SLACK_POST_MESSAGE",
+   "data": {
+     "webhook": "XXXX", // Webhook for your channel
+     "payload": {} // Slack message payload - see https://api.slack.com/docs/messages/builder
    }
  }
 ```
