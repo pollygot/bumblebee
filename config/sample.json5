@@ -1,0 +1,13 @@
+{
+  "EXPRESS": {
+    "port": 3000,
+  },
+  "MAILGUN": {
+    "apikey": "key-XXXXXXXXXXXXXXXXXXXXXXX",
+    "domain": "www.mydomain.com",
+  },
+  "REDIS": {
+    "host": "127.0.0.1",
+    "port": 6379
+  }
+}

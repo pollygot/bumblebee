@@ -1,18 +1,21 @@
-// IMPORTS
-import * as dotenv from 'dotenv'
+const config = require('config')
 const Kue = require('kue')
+const Mailgun = require('./modules/mailgun')
+
 
 // DECLARE CONFIG
-dotenv.config({ path: '.example.env' }) // Use this file as a baseline for your own environment
-const REDIS_HOST = process.env.REDIS_HOST || '127.0.0.1'
-const REDIS_PORT = +(process.env.REDIS_PORT || 6379)
-const EXPRESS_PORT = +(process.env.PORT || 3000)
+const REDIS_HOST = config.get('REDIS.host') || '127.0.0.1'
+const REDIS_PORT = +(config.get('REDIS.port') || 6379)
+const EXPRESS_PORT = +(config.get('EXPRESS.port') || 3000)
 
 // Set up Kue
 const Queue = Kue.createQueue({
-  redis: { host: REDIS_HOST, port: REDIS_PORT }
+  redis: { host: REDIS_HOST, port: REDIS_PORT },
 })
+
+// Start modules
+Mailgun.listen(Queue)
 
 // Expost the App
 Kue.app.listen(EXPRESS_PORT)
-console.log('Kue listening on localhost:' + EXPRESS_PORT)
+console.log(`Kue listening on localhost:${EXPRESS_PORT}`)
