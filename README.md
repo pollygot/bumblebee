@@ -53,3 +53,18 @@ Send a new email
    }
  }
 ```
+
+#### Trello 
+
+Create a new card
+```javascript
+// POST 'localhost:3000/job'
+{
+   "type": "TRELLO_CREATE_CARD",
+   "data": {
+     "list_id": "XXXX", // Trello List ID
+     "name": "Card name",
+     "desc": "Card description"
+   }
+ }
+```
