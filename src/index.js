@@ -1,7 +1,7 @@
 const config = require('config')
 const Kue = require('kue')
 const Mailgun = require('./modules/mailgun')
-
+const Trello = require('./modules/trello')
 
 // DECLARE CONFIG
 const REDIS_HOST = config.get('REDIS.host') || '127.0.0.1'
@@ -15,6 +15,7 @@ const Queue = Kue.createQueue({
 
 // Start modules
 Mailgun.listen(Queue)
+Trello.listen(Queue)
 
 // Expost the App
 Kue.app.listen(EXPRESS_PORT)

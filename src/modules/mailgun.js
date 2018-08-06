@@ -1,5 +1,3 @@
-import { resolve } from 'url';
-
 const config = require('config')
 const validator = require('validator')
 const Mailgun = require('mailgun-js')
@@ -36,7 +34,7 @@ const sendMessage = (payload) => {
     if (!payload.subject) return reject('invalid subject')
     if (!payload.text) return reject('invalid text')
     let data = {
-      from: `<${payload.from}>`,
+      from: (payload.sender) ? `${payload.sender} <${payload.from}>` : `<${payload.from}>`,
       to: payload.to,
       subject: payload.subject,
       text: payload.text

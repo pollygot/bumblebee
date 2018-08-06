@@ -28,6 +28,7 @@
     "dotenv": "^6.0.0",
     "kue": "^0.11.6",
     "mailgun-js": "^0.20.0",
+    "node-trello": "^1.3.0",
     "validator": "^10.5.0"
   }
 }
