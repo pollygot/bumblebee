@@ -14,8 +14,9 @@ Kue Workers has the following:
 ## Getting started
 
 ```bash
-git clone # clone this repo
+git clone https://github.com/pollygot/workers-kue # clone this repo
 npm install # install dependencies
+cp config/sample.json5 config/default.json5 # <-- Fill this with you own config
 npm run dev # start a dev server that will watch for any changes and recompile
 ```
 
