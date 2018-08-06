@@ -57,6 +57,21 @@ All jobs are created by `POST`ing to the `/job` endpoint
  }
 ```
 
+#### Facebook 
+
+Post to a Facebook page feed
+```javascript
+// POST 'localhost:3000/job'
+{
+   "type": "FACEBOOK_POST_TO_PAGE_FEED",
+   "data": {
+     "feed_id": "123456789087654",
+     "message": "Hello world",
+     "access_token": "XXXXXXXXXXXXXXXXXXXX"
+   }
+ }
+```
+
 #### Mailgun 
 
 Send a new email

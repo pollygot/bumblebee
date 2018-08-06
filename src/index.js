@@ -1,6 +1,8 @@
 const config = require('config')
 const Kue = require('kue')
+const Facebook = require('./modules/facebook')
 const Mailgun = require('./modules/mailgun')
+const Slack = require('./modules/slack')
 const Trello = require('./modules/trello')
 
 // DECLARE CONFIG
@@ -14,7 +16,9 @@ const Queue = Kue.createQueue({
 })
 
 // Start modules
+Facebook.listen(Queue)
 Mailgun.listen(Queue)
+Slack.listen(Queue)
 Trello.listen(Queue)
 
 // Expost the App
