@@ -1,14 +1,17 @@
 # Kue Workers
 
-A KueJS implementation for common async tasks. 
+A KueJS queue for common async tasks. This repo exposes an API that you can call to do some of the following:
 
-Kue Workers has the following:
+- Facebook Bots (coming soon)
+- Mailgun - send emails, (more coming soon)
+- Slack (coming soon)
+- Telegram (coming soon)
+- Trello - create cards, (more coming soon)
+- Twilio (coming soon)
 
-- Facebook Bots
-- Mailgun
-- Slack
-- Telegram
-- Twilio
+### Why use this?
+
+For many of the same benefits that any queue will give you: offloading long-running tasks, centralised logging, retry abilities etc. Also it will help to keep your core projects thinner since this repo will contain all the heavy third-party libraries.
 
 
 ## Getting started
