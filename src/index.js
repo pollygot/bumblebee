@@ -24,3 +24,8 @@ Trello.listen(Queue)
 // Expost the App
 Kue.app.listen(EXPRESS_PORT)
 console.log(`Kue listening on localhost:${EXPRESS_PORT}`)
+
+Queue.on('error', function (err) {
+  console.log('Oops... ', err)
+})
+Queue.watchStuckJobs(1000)

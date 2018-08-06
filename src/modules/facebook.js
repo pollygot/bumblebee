@@ -25,4 +25,6 @@ export function listen(queue) {
 
 }
 
-const sendMessage = (webhook, payload) => (Axios.post(webhook, payload))
+const sendMessage = (webhook, payload) => {
+  return Axios.post(webhook, payload)
+}
