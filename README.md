@@ -1,4 +1,4 @@
-# Kue Workers (by Pollygot)
+# Kue Workers
 
 A KueJS implementation for common async tasks. 
 
@@ -21,7 +21,9 @@ npm run dev # start a dev server that will watch for any changes and recompile
 
 
 
-### API
+## API
+
+All jobs are created by `POST`ing to the `/job` endpoint
 
 ```javascript
 // POST 'localhost:3000/job'
@@ -36,7 +38,7 @@ npm run dev # start a dev server that will watch for any changes and recompile
  }
 ```
 
-##### Mailgun 
+#### Mailgun 
 
 Send a new email
 ```javascript
