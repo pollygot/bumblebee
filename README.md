@@ -13,6 +13,16 @@ Kue Workers has the following:
 
 ## Getting started
 
+### Running with Docker
+
+```bash
+git clone https://github.com/pollygot/workers-kue # clone this repo
+cp config/sample.json5 config/default.json5 # <-- Fill this with you own config
+docker-compose up
+```
+
+### Development
+
 ```bash
 git clone https://github.com/pollygot/workers-kue # clone this repo
 npm install # install dependencies

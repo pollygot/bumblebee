@@ -4,7 +4,7 @@ const Mailgun = require('./modules/mailgun')
 const Trello = require('./modules/trello')
 
 // DECLARE CONFIG
-const REDIS_HOST = config.get('REDIS.host') || '127.0.0.1'
+const REDIS_HOST = process.env.REDIS_HOST || config.get('REDIS.host') // can come from Docker
 const REDIS_PORT = +(config.get('REDIS.port') || 6379)
 const EXPRESS_PORT = +(config.get('EXPRESS.port') || 3000)
 

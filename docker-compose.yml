@@ -1,0 +1,13 @@
+version: '2'
+services:
+  kue:
+    build: ./
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - TZ=Asia/Singapore
+  redis:
+    image: redis
