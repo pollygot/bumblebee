@@ -27,7 +27,7 @@ It's recommended that you fork this repo so that you can pull updates at any tim
 
 ```bash
 # If you downloaded or cloned, you should create an upstream branch with the original repo
-git remote add upstream https://github.com/pollygot/restiface
+git remote add upstream https://github.com/pollygot/workers-kue
 
 # Keep updated at any time
 git fetch upstream # fetch changes from Pollygot
