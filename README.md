@@ -11,7 +11,7 @@ A KueJS queue for common async tasks. This repo exposes an API that you can call
 
 ### Why use this?
 
-For many of the same benefits that any queue will give you: 
+For many of the same benefits that any queue will give you:
 - offloading long-running tasks
 - centralised logging
 - retry abilities
@@ -21,24 +21,29 @@ For many of the same benefits that any queue will give you:
 
 ## Getting started
 
-### Running with Docker
+### Usage
+
+It's recommended that you fork this repo so that you can pull updates at any time.
 
 ```bash
-git clone https://github.com/pollygot/workers-kue # clone this repo
-cp config/sample.json5 config/default.json5 # <-- Fill this with you own config
-docker-compose up
-```
+# If you downloaded or cloned, you should create an upstream branch with the original repo
+git remote add upstream https://github.com/pollygot/restiface
 
-### Development
+# Keep updated at any time
+git fetch upstream # fetch changes from Pollygot
+git checkout master # switch to your local master branch
+git merge upstream/master # update local master with changes from Pollygot
 
-```bash
-git clone https://github.com/pollygot/workers-kue # clone this repo
-npm install # install dependencies
-cp config/sample.json5 config/default.json5 # <-- Fill this with you own config
+# Set up your own config for each app
+cp config/sample.json5 config/default.json5 # <-- Fill this with your own config
 npm run dev # start a dev server that will watch for any changes and recompile
 ```
 
+### Running with Docker
 
+```bash
+docker-compose up
+```
 
 ## API
 
@@ -49,7 +54,7 @@ All jobs are created by `POST`ing to the `/job` endpoint
 {
    "type": "<MODULE_AND_METHOD_NAME>",
    "data": { <PAYLOAD_DATA> },
-   "options" : { // not required 
+   "options" : { // not required
      "attempts": 1, // Defaults to 3 attemps
      "delay": 0, // Default will process the job immediately
      "priority": "normal" // Defaults to normal priority
@@ -57,7 +62,7 @@ All jobs are created by `POST`ing to the `/job` endpoint
  }
 ```
 
-#### Facebook 
+#### Facebook
 
 Post to a Facebook page feed
 ```javascript
@@ -72,7 +77,7 @@ Post to a Facebook page feed
  }
 ```
 
-#### Mailgun 
+#### Mailgun
 
 Send a new email
 ```javascript
@@ -88,7 +93,7 @@ Send a new email
  }
 ```
 
-#### Trello 
+#### Trello
 
 Create a new card
 ```javascript
@@ -104,7 +109,7 @@ Create a new card
 ```
 
 
-#### Slack 
+#### Slack
 
 Create a new card
 ```javascript
@@ -116,4 +121,15 @@ Create a new card
      "payload": {} // Slack message payload - see https://api.slack.com/docs/messages/builder
    }
  }
+```
+
+
+### Development
+
+```bash
+git clone https://github.com/pollygot/workers-kue # clone this repo
+npm install # install dependencies
+cp config/sample.json5 config/default.json5 # <-- Fill this with you own config
+npm run dev # start a dev server that will watch for any changes and recompile
+
 ```
