@@ -1,4 +1,4 @@
-# Kue Workers
+# BumbleBee by Pollygot
 
 A KueJS queue for common async tasks. This repo exposes an API that you can call to do some of the following:
 
@@ -133,3 +133,12 @@ cp config/sample.json5 config/default.json5 # <-- Fill this with you own config
 npm run dev # start a dev server that will watch for any changes and recompile
 
 ```
+
+# Roadmap
+
+- [ ] Add CORs to the API
+- [ ] Simplify the API for each worker - eg: `/trello`, `/slack` rather than all going to `/job`
+- [ ] Deployment strategies
+- [ ] Make each worker "multitenant" - eg, allow multiple Facebook Bots
+- [ ] Failure notifications? Perhaps using Mailgun/trello etc
+- [ ] Multiple implementations - not just Kue. Users should be able to choose Kue, Bull, Rabbit etc, and they all function with the same API

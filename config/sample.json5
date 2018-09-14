@@ -1,4 +1,7 @@
 {
+  "API": {
+    "cors": false
+  },
   "EXPRESS": {
     "port": 3000,
   },
