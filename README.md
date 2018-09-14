@@ -1,9 +1,12 @@
-# BumbleBee by Pollygot
+# BumbleBee
+
+**[By Pollygot](https://pollygot.com)**. Status: not production ready, use at your own risk.
+
 
 A KueJS queue for common async tasks. This repo exposes an API that you can call to do some of the following:
 
 - Facebook Bots (coming soon)
-- Mailgun - send emails, (more coming soon)
+- Mailgun - send emails, (mor̨e coming soon)
 - Slack (coming soon)
 - Telegram (coming soon)
 - Trello - create cards, (more coming soon)
@@ -126,8 +129,10 @@ Create a new card
 
 ### Development
 
+Prereq's: install Redis on your dev machine.
+
 ```bash
-git clone https://github.com/pollygot/workers-kue # clone this repo
+git clone https://github.com/pollygot/bumblebee # clone this repo
 npm install # install dependencies
 cp config/sample.json5 config/default.json5 # <-- Fill this with you own config
 npm run dev # start a dev server that will watch for any changes and recompile
