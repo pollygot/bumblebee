@@ -50,79 +50,51 @@ docker-compose up
 
 ## API
 
-All jobs are created by `POST`ing to the `/job` endpoint
+All jobs are created by `POST`ing to the API, with the following
+
+##### Default Options
 
 ```javascript
 // POST 'localhost:3000/job'
 {
-   "type": "<MODULE_AND_METHOD_NAME>",
-   "data": { <PAYLOAD_DATA> },
-   "options" : { // not required
-     "attempts": 1, // Defaults to 3 attemps
-     "delay": 0, // Default will process the job immediately
-     "priority": "normal" // Defaults to normal priority
-   }
+  "appKey": "XXX" // required @TODO: explain
+  "data": { <PAYLOAD_DATA> },
+  "options" : { // not required
+    "attempts": 1, // Defaults to 3 attemps
+    "delay": 0, // Default will process the job immediately
+    "priority": "normal" // Defaults to normal priority
+  }
  }
 ```
 
-#### Facebook
+##### Facebook
 
 Post to a Facebook page feed
 ```javascript
-// POST 'localhost:3000/job'
+// POST 'localhost:3000/facebook/feed'
 {
-   "type": "FACEBOOK_POST_TO_PAGE_FEED",
-   "data": {
-     "feed_id": "123456789087654",
-     "message": "Hello world",
-     "access_token": "XXXXXXXXXXXXXXXXXXXX"
-   }
+  "appKey": "XXX" // required
+  "data": {
+    "feed_id": "123456789087654",
+    "message": "Hello world"
+  },
+  "options" {} // Optional - see Default Options above
  }
 ```
 
-#### Mailgun
+##### Mailgun
 
 Send a new email
 ```javascript
 // POST 'localhost:3000/job'
 {
-   "type": "MAILGUN_SEND_MESSAGE",
    "data": {
      "to": "recipient@email.com",
      "from": "sender@email.com",
      "sender": "Sender Name",
      "text": "Testing some Mailgun awesomeness!"
-   }
- }
-```
-
-#### Trello
-
-Create a new card
-```javascript
-// POST 'localhost:3000/job'
-{
-   "type": "TRELLO_CREATE_CARD",
-   "data": {
-     "list_id": "XXXX", // Trello List ID
-     "name": "Card name",
-     "desc": "Card description"
-   }
- }
-```
-
-
-#### Slack
-
-Create a new card
-```javascript
-// POST 'localhost:3000/job'
-{
-   "type": "SLACK_POST_MESSAGE",
-   "data": {
-     "webhook": "XXXX", // Webhook for your channel
-     "payload": {} // Slack message payload - see https://api.slack.com/docs/messages/builder
-   }
+   },
+   "options" {} // Optional - see Default Options above
  }
 ```
 

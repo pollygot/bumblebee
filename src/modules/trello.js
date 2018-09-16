@@ -13,7 +13,7 @@ const trello = new Trello(TRELLO_KEY, TRELLO_TOKEN)
 export function listen (queue) {
 
   // TRELLO_CREATE_CARD
-  queue.process(JOB_CREATE_CARD, (job, done) => { 
+  queue.process(JOB_CREATE_CARD, (job, done) => {
     createCard(job.data)
     .then(res => {
       job.log(res)
