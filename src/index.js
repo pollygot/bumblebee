@@ -77,8 +77,18 @@ app.get('/v1/admin/apps/:appKey?', async (req, res) => {
 app.get('/v1/apps/:appKey/jobs', async (req, res) => {
   let { appKey } = req.params
   let q = allQueues.find(x => (x.name === appKey))
-  let jobs = await q.getJobs()
-  return res.json(jobs)
+  let active = await q.getJobs('active')
+  let completed = await q.getJobs('completed')
+  let failed = await q.getJobs('failed')
+  let delayed = await q.getJobs('delayed')
+  let waiting = await q.getJobs('waiting')
+  return res.json({
+    active: active,
+    completed: completed,
+    failed: failed,
+    delayed: delayed,
+    waiting: waiting
+  })
 })
 
 // Get jobs/job

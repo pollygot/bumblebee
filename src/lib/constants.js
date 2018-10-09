@@ -6,10 +6,8 @@ module.exports = {
         {
           action: 'POST_TO_FEED',
           params: [
-            { param: 'to', required: true, format: 'string' },
-            { param: 'from', required: true, format: 'string' },
-            { param: 'subject', required: true, format: 'string' },
-            { param: 'text', required: true, format: 'text' },
+            { param: 'feed_id', required: true, format: 'string' },
+            { param: 'message', required: true, format: 'text' },
           ]
         }
       ]
@@ -46,7 +44,7 @@ module.exports = {
         {
           action: 'CREATE_CARD',
           params: [
-            { param: 'listId', required: true, format: 'string' },
+            { param: 'list_id', required: true, format: 'string' },
             { param: 'name', required: true, format: 'string' },
           ]
         }
