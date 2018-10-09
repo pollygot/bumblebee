@@ -1,21 +1,26 @@
-const Axios = require('axios')
-
-// CONFIG
-const SLACK_POST_MESSAGE = 'SLACK_POST_MESSAGE'
+var exports   = module.exports = {}
+const axios   = require('axios')
 
 // Start a listener on the queue to process Job Events sent to the API for this module
-export function listen(queue) {
-
-  // SLACK_POST_MESSAGE
-  queue.process(SLACK_POST_MESSAGE, (job, done) => {
-    sendMessage(job.data.webhook, job.data.payload)
-    .then(res => {
-      job.log(res)
-      return done()
-    })
-    .catch(e => done(new Error(e)))
-  })
-
+exports.listen = (Queue, appConfig) => {
+  var queue = new Queue(appConfig.key, appConfig.redis)
+  queue.process((job, done) => process(appConfig, job, done))
+  return queue
 }
 
-const sendMessage = (webhook, payload) => (Axios.post(webhook, payload))
+const process = (appConfig, job, done) => {
+  let { action, payload } = job.data
+  switch (action.toString()) {
+    case 'SEND_MESSAGE':
+      return sendMessage(appConfig, payload, done)
+    default:
+      return done(new Error('Invalid action: ' + action))
+  }
+}
+
+const sendMessage = (appConfig, payload, done) => {
+  let { webhook, data } = payload
+  axios.post(webhook, data)
+    .then(result => { return done(null, result) })
+    .catch(error => { return reject(new Error(error)) })
+}
