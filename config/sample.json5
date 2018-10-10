@@ -1,20 +1,12 @@
 {
-  "API": {
-    "cors": false
+  API: {
+    port: 3001,
+    cors: true
   },
-  "EXPRESS": {
-    "port": 3000,
+  REDIS: {
+    host: "127.0.0.1",
+    port: 6379
   },
-  "MAILGUN": {
-    "apikey": "key-XXXXXXXXXXXXXXXXXXXXXXX",
-    "domain": "www.mydomain.com",
-  },
-  "REDIS": {
-    "host": "127.0.0.1",
-    "port": 6379
-  },
-  "TRELLO": {
-    "key": "XXXXXXXXXXXXXXXXXXXXXXX",
-    "token": "XXXXXXXXXXXXXXXXXXXXXXX"
-  },
+  APPS: [
+  ],
 }

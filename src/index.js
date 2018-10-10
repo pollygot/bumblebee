@@ -27,6 +27,7 @@ const APPS = config.get('APPS').map(x => {
 //
 const facebook = require('./modules/facebook')
 const mailgun = require('./modules/mailgun')
+const nexmo = require('./modules/nexmo')
 const slack = require('./modules/slack')
 const trello = require('./modules/trello')
 var allQueues = []
@@ -41,6 +42,10 @@ APPS.forEach(app => {
     case 'MAILGUN':
       console.log('Starting Mailgun')
       allQueues.push(mailgun.listen(Queue, appConfig))
+      break;
+    case 'NEXMO':
+      console.log('Starting Nexmo')
+      allQueues.push(nexmo.listen(Queue, appConfig))
       break;
     case 'SLACK':
       console.log('Starting Slack')
@@ -59,8 +64,13 @@ APPS.forEach(app => {
 // Expose the API
 // -------------------------------
 //
+const logger = (req, res, next) => {
+  console.log("API: ", req.path)
+  next()
+}
 const app = express()
 app.use(express.json())
+app.use(logger)
 if (CORS) app.use(require('cors')())
 
 // Get apps/app
@@ -138,7 +148,6 @@ app.post('/v1/jobs', [
   let job = await queue.add(processingInfo, options)
   return res.json({ id: job.id })
 })
-
 app.use((err, req, res, next) => {
   console.error(err) // eslint-disable-line no-console
   res.status(401).send(err + '')
