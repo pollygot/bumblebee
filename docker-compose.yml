@@ -4,10 +4,15 @@ services:
     build: ./
     ports:
       - "3001:3001"
-    depends_on:
+    networks:
       - redis
     environment:
       - REDIS_HOST=redis
       - TZ=Asia/Singapore
   redis:
     image: redis
+    networks:
+      - redis
+networks:
+  redis:
+    driver: bridge

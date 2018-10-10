@@ -8,7 +8,7 @@ const GRAPH_URL = `https://graph.facebook.com`;
 
 // Start a listener on the queue to process Job Events sent to the API for this module
 _exports.listen = (Queue, appConfig) => {
-  var queue = new Queue(appConfig.key, appConfig.redis);
+  var queue = new Queue(appConfig.key, appConfig.queue);
   queue.process((job, done) => process(appConfig, job, done));
   return queue;
 };

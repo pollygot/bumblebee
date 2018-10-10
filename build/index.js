@@ -18,7 +18,8 @@ const {
 // -------------------------------
 //
 const APP_DEFAULTS = constants.APPS;
-const REDIS = config.get('REDIS');
+const REDIS_HOST = process.env.REDIS_HOST || config.get('REDIS').host;
+const REDIS_PORT = config.get('REDIS').port;
 const API_PORT = +(config.get('API.port') || 3000);
 const CORS = config.get('API.cors') || false;
 const APPS = config.get('APPS').map(x => {
@@ -39,7 +40,7 @@ const trello = require('./modules/trello');
 var allQueues = [];
 APPS.forEach(app => {
   let appConfig = _extends({}, app);
-  if (!appConfig.redis) appConfig.redis = REDIS;
+  if (!appConfig.queue) appConfig.queue = { redis: { host: REDIS_HOST, port: REDIS_PORT } };
   switch (app.type) {
     case 'FACEBOOK':
       console.log('Starting Facebook');
