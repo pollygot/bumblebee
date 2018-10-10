@@ -2,7 +2,6 @@
 !.example.env
 config/*
 !config/sample.json5
-build
 .vscode
 
 # Logs
