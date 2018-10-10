@@ -1,9 +1,9 @@
 version: '2'
 services:
-  kue:
+  bumblebee:
     build: ./
     ports:
-      - "3000:3000"
+      - "3001:3001"
     depends_on:
       - redis
     environment:
