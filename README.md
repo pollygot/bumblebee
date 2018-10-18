@@ -67,10 +67,3 @@ All jobs are created by `POST`ing to the API, with the following
   }
  }
 ```
-
-# Roadmap
-
-- [x] Add CORs to the API
-- [ ] Deployment strategies
-- [x] Make each worker "multitenant" - eg, allow multiple Facebook Bots
-- [ ] Failure notifications? Perhaps using Mailgun/trello etc

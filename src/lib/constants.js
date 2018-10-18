@@ -1,6 +1,50 @@
 module.exports = {
   APPS: [
     {
+      type: 'EXPO',
+      actions: [
+        {
+          action: 'SEND_MESSAGE',
+          params: [
+            {
+              param: 'to',
+              required: true,
+              format: 'string',
+              label: 'Device Token',
+              help: 'eg: ExponentPushToken[xxxxx], ExponentPushToken[xxxxxx]',
+            },
+            {
+              param: 'title',
+              required: true,
+              format: 'string',
+              label: 'The title that will appear in the toast',
+            },
+            {
+              param: 'body',
+              required: true,
+              format: 'string',
+              label: 'Body',
+              help: 'The message that will show below the title',
+            },
+            {
+              param: 'sound',
+              required: false,
+              format: 'string',
+              label: 'Sound',
+              help: "Which sound should the phone make? eg: 'default'",
+            },
+            {
+              param: 'data',
+              required: false,
+              format: 'JSON',
+              label: 'Data',
+              help: 'Some extra data to send (must be JSON format)',
+            },
+          ],
+        },
+      ],
+    },
+    {
       type: 'FACEBOOK',
       actions: [
         {

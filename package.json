@@ -1,12 +1,12 @@
 {
-  "name": "workers-kue",
+  "name": "bumblebee",
   "version": "1.0.0",
-  "description": "A KueJS implementation for common async tasks",
+  "description": "A Bull implementation for common async tasks",
   "repository": "github:pollygot/workers-kue",
   "main": "src/index.js",
   "scripts": {
     "compile": "rm -rf ./build && babel ./src --presets stage-3 --plugins transform-es2015-modules-commonjs --out-dir ./build/",
-    "dev": "node ./src/",
+    "dev": "nodemon ./src/",
     "start": "node ./build/",
     "pretty": "prettier --write \"./**/*.{js,json,yml,md}\""
   },
@@ -17,6 +17,7 @@
     "bull": "^3.4.8",
     "config": "^2.0.1",
     "cors": "^2.8.4",
+    "expo-server-sdk": "^3.0.1",
     "express": "^4.16.3",
     "express-validator": "^5.3.0",
     "mailgun-js": "^0.20.0",
@@ -27,6 +28,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "eslint": "^5.3.0",
     "husky": "^1.1.2",
+    "nodemon": "^1.18.4",
     "prettier": "1.14.3",
     "pretty-quick": "^1.8.0"
   },

@@ -4,10 +4,9 @@ const Queue = require('bull')
 const constants = require('./lib/constants')
 const { check, validationResult } = require('express-validator/check')
 
-//
-// GLOBAL CONFIG
-// -------------------------------
-//
+/**
+ * GLOBAL CONFIG
+ */
 const APP_DEFAULTS = constants.APPS
 const REDIS_HOST = process.env.REDIS_HOST || config.get('REDIS').host
 const REDIS_PORT = config.get('REDIS').port
@@ -18,10 +17,10 @@ const APPS = config.get('APPS').map(x => {
   return { ...x, actions: appDefaults.actions } // @TODO: allow the user to specify a subset of actions
 })
 
-//
-// Initialise queues
-// -------------------------------
-//
+/**
+ * Initialise queues
+ */
+const expo = require('./modules/expo')
 const facebook = require('./modules/facebook')
 const mailgun = require('./modules/mailgun')
 const nexmo = require('./modules/nexmo')
@@ -33,6 +32,10 @@ APPS.forEach(app => {
   if (!appConfig.queue)
     appConfig.queue = { redis: { host: REDIS_HOST, port: REDIS_PORT } }
   switch (app.type) {
+    case 'EXPO':
+      console.log('Starting expo')
+      allQueues.push(expo.listen(Queue, appConfig))
+      break
     case 'FACEBOOK':
       console.log('Starting Facebook')
       allQueues.push(facebook.listen(Queue, appConfig))
@@ -58,10 +61,9 @@ APPS.forEach(app => {
   }
 })
 
-//
-// Expose the API
-// -------------------------------
-//
+/**
+ * Expose the API
+ */
 const logger = (req, res, next) => {
   console.log('API: ', req.path)
   next()
@@ -168,10 +170,9 @@ app.listen(API_PORT, () => {
   console.log(`API listening on port ${API_PORT}`)
 })
 
-//
-// Helpers
-// ------------------
-//
+/**
+ * Helpers
+ */
 const appExists = (allApps, appKey) => {
   return allApps.some(x => x.key == appKey)
 }
