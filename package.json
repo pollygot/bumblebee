@@ -7,7 +7,8 @@
   "scripts": {
     "compile": "rm -rf ./build && babel ./src --presets stage-3 --plugins transform-es2015-modules-commonjs --out-dir ./build/",
     "dev": "node ./src/",
-    "start": "node ./build/"
+    "start": "node ./build/",
+    "pretty": "npx pretty-quick"
   },
   "author": "@kiwicopple",
   "license": "ISC",
@@ -24,6 +25,14 @@
   "devDependencies": {
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-stage-3": "^6.24.1",
-    "eslint": "^5.3.0"
+    "eslint": "^5.3.0",
+    "husky": "^1.1.2",
+    "prettier": "1.14.3",
+    "pretty-quick": "^1.8.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
