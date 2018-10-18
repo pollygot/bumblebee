@@ -18,8 +18,8 @@ module.exports = {
         {
           action: 'SEND_MESSAGE',
           params: [
-            { param: 'to', required: true, format: 'string', label: 'To' },
-            { param: 'from', required: true, format: 'string', label: 'From' },
+            { param: 'to', required: true, format: 'string', label: 'To', help: 'user@email.com' },
+            { param: 'from', required: true, format: 'string', label: 'From', help: 'hello@company.com' },
             { param: 'subject', required: true, format: 'string', label: 'Subject' },
             { param: 'text', required: true, format: 'text', label: 'Body' },
           ]
