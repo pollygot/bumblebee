@@ -10,14 +10,15 @@ module.exports = {
               param: 'to',
               required: true,
               format: 'string',
-              label: 'Device Token',
+              label: 'Device Tokens',
               help: 'eg: ExponentPushToken[xxxxx], ExponentPushToken[xxxxxx]',
             },
             {
               param: 'title',
               required: true,
               format: 'string',
-              label: 'The title that will appear in the toast',
+              label: 'Title',
+              help: 'The title that will appear in the toast',
             },
             {
               param: 'body',
