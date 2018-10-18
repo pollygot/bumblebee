@@ -8,7 +8,7 @@
     "compile": "rm -rf ./build && babel ./src --presets stage-3 --plugins transform-es2015-modules-commonjs --out-dir ./build/",
     "dev": "node ./src/",
     "start": "node ./build/",
-    "pretty": "npx pretty-quick"
+    "pretty": "prettier --write \"./**/*.{js,json,yml,md}\""
   },
   "author": "@kiwicopple",
   "license": "ISC",

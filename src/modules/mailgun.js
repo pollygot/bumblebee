@@ -1,5 +1,5 @@
-var exports       = module.exports = {}
-const Mailgun     = require('mailgun-js')
+var exports = (module.exports = {})
+const Mailgun = require('mailgun-js')
 
 // Start a listener on the queue to process Job Events sent to the API for this module
 exports.listen = (Queue, appConfig) => {
@@ -21,13 +21,15 @@ const process = (appConfig, job, done) => {
 const sendMessage = (appConfig, payload, done) => {
   let mailgun = Mailgun({
     apiKey: appConfig.config.apikey,
-    domain: appConfig.config.domain
+    domain: appConfig.config.domain,
   })
   let data = {
-    from: (payload.sender) ? `${payload.sender} <${payload.from}>` : `<${payload.from}>`,
+    from: payload.sender
+      ? `${payload.sender} <${payload.from}>`
+      : `<${payload.from}>`,
     to: payload.to,
     subject: payload.subject,
-    text: payload.text
+    text: payload.text,
   }
   mailgun.messages().send(data, (error, result) => {
     if (error) return done(new Error(error))

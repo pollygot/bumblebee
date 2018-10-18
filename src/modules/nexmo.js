@@ -1,4 +1,4 @@
-var exports = module.exports = {}
+var exports = (module.exports = {})
 const axios = require('axios')
 
 // Start a listener on the queue to process Job Events sent to the API for this module
@@ -27,8 +27,8 @@ const sendMessage = async (appConfig, payload, done) => {
     from: payload.from,
     text: payload.text,
   }
-  let {data: result} = await axios.post(SMS_URL, data).catch(e => { 
-    return done(new Error(e)) 
+  let { data: result } = await axios.post(SMS_URL, data).catch(e => {
+    return done(new Error(e))
   })
   return done(null, result)
 }

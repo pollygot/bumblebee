@@ -1,5 +1,5 @@
-var exports   = module.exports = {}
-const Trello  = require('node-trello')
+var exports = (module.exports = {})
+const Trello = require('node-trello')
 
 // Start a listener on the queue to process Job Events sent to the API for this module
 exports.listen = (Queue, appConfig) => {
@@ -22,12 +22,16 @@ const createCard = (appConfig, payload, done) => {
   const TRELLO_KEY = appConfig.config.key
   const TRELLO_TOKEN = appConfig.config.token
   const trello = new Trello(TRELLO_KEY, TRELLO_TOKEN)
-  trello.post('/1/cards/', {
-    idList: payload.list_id,
-    name: payload.name,
-    desc: payload.desc || ''
-  }, (err, result) => {
-    if (err) return reject(new Error(err))
-    return done(null, result)
-  })
+  trello.post(
+    '/1/cards/',
+    {
+      idList: payload.list_id,
+      name: payload.name,
+      desc: payload.desc || '',
+    },
+    (err, result) => {
+      if (err) return reject(new Error(err))
+      return done(null, result)
+    }
+  )
 }

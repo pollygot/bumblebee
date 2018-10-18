@@ -1,5 +1,5 @@
-var exports   = module.exports = {}
-const axios   = require('axios')
+var exports = (module.exports = {})
+const axios = require('axios')
 
 // Start a listener on the queue to process Job Events sent to the API for this module
 exports.listen = (Queue, appConfig) => {
@@ -20,7 +20,12 @@ const process = (appConfig, job, done) => {
 
 const sendMessage = (appConfig, payload, done) => {
   let { webhook, data } = payload
-  axios.post(webhook, data)
-    .then(result => { return done(null, result) })
-    .catch(error => { return reject(new Error(error)) })
+  axios
+    .post(webhook, data)
+    .then(result => {
+      return done(null, result)
+    })
+    .catch(error => {
+      return reject(new Error(error))
+    })
 }

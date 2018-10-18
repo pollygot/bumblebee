@@ -3,7 +3,7 @@ services:
   bumblebee:
     build: ./
     ports:
-      - "3001:3001"
+      - '3001:3001'
     networks:
       - redis
     environment:

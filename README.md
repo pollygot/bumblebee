@@ -15,12 +15,12 @@ A Bull queue for common async tasks. This repo exposes an API that you can call 
 ### Why use this?
 
 For many of the same benefits that any queue will give you:
+
 - offloading long-running tasks
 - centralised logging
 - retry abilities
 - delaying tasks (eg, sending follow-up emails after 10 mins)
 - It can help to keep your core projects thinner since this repo will contain all the heavy third-party libraries.
-
 
 ## Getting started
 
@@ -67,7 +67,6 @@ All jobs are created by `POST`ing to the API, with the following
   }
  }
 ```
-
 
 # Roadmap
 
